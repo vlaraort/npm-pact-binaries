@@ -18,16 +18,16 @@ async function generateDist(lastReleases) {
     console.log("END")
 }
 
-async function getLastReleases () {
+async function getLastReleases() {
     const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest?';
-    const params = new URLSearchParams({ client_id: process.env.GH_CLIENT_ID, client_secret: process.env.GH_CLIENT_SECRET})
+    const params = new URLSearchParams({ client_id: process.env.GH_CLIENT_ID, client_secret: process.env.GH_CLIENT_SECRET })
     try {
         const response = await fetch(url + params);
         const json = await response.json();
         return json;
-      } catch (error) {
+    } catch (error) {
         console.log("Error fetching releases");
-      }
+    }
 }
 
 async function downloadRelease(url, name) {
@@ -36,25 +36,26 @@ async function downloadRelease(url, name) {
     await streamPipeline(response.body, fs.createWriteStream(`./dist/${name}`))
 }
 
-async function updateVersion (version) {
+async function updateVersion(version) {
     console.log(version)
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
-    content.version = version;
+    // content.version = version;
+    content.version = '1.67.1-beta'
     await AsyncWriteFile(packagePath, JSON.stringify(content, null, 2));
     console.log("end write")
 }
 
-async function run () {
+async function run() {
     const lastReleases = await getLastReleases();
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
-    // const releaseVersion = lastReleases.tag_name.replace('v', '') + '-' + Math.floor((Math.random() * 10000) + 1);;
+    // const releaseVersion = lastReleases.tag_name.replace('v', '');
     const releaseVersion = '1.67.1-beta'
     console.log("RELEASE VERSION", releaseVersion)
-    if(content.version !== releaseVersion){
+    if (content.version !== releaseVersion) {
         await generateDist(lastReleases);
     } else {
         // Throw error to stop the pipeline
