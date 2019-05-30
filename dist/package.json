@@ -1,5 +1,5 @@
 {
-  "name": "pact-binaries",
+  "name": "npm-pact-binaries",
   "version": "1.66.0",
   "description": "",
   "main": "index.js",
