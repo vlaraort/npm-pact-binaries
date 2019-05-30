@@ -37,7 +37,6 @@ async function downloadRelease(url, name) {
 }
 
 async function updateVersion(version) {
-    console.log(version)
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
@@ -54,12 +53,12 @@ async function run() {
     var content = JSON.parse(file_content);
     // const releaseVersion = lastReleases.tag_name.replace('v', '');
     const releaseVersion = '1.67.1-beta'
-    console.log("RELEASE VERSION", releaseVersion)
     if (content.version !== releaseVersion) {
         await generateDist(lastReleases);
     } else {
         // Throw error to stop the pipeline
-        throw new Error('New binaries not found, skipping publish.');
+        console.log('New binaries not found, skipping publish.');
+        process.exit(1);
     }
 }
 
