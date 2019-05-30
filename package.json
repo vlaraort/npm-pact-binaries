@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js",
-    "publish": "npm publish dist"
+    "build": "node generate.js",
+    "check-generate": "node should_generate.js"
   },
   "author": "",
   "license": "ISC",

@@ -9,8 +9,8 @@ node_js:
 install: npm install
 jobs:
   include:
-    - stage: build
-      script: npm run build
+    - stage: check
+      script: npm run check-generate
     - stage: release
       node_js: 10
       script: npm run build
