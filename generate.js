@@ -47,6 +47,7 @@ async function updateVersion(version) {
 }
 
 async function run() {
+    const lastReleases = await getLastReleases();
     await generateDist(lastReleases);
 }
 

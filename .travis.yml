@@ -27,5 +27,7 @@ jobs:
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
       after_deploy:
+        - cd ..
+        - branch_name=`git rev-parse --abbrev-ref HEAD`
         - git commit -am "[ci-skip] Update version"
-        - git push origin master
+        - git push origin $branch_name
