@@ -21,3 +21,6 @@ jobs:
         email: "$NPM_EMAIL"
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
+      after_deploy:
+        - git commit -am "[ci-skip] Update version"
+        - git push origin master
