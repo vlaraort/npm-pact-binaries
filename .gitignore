@@ -1,0 +1,5 @@
+#ignore all files in dist BUT package.json
+dist/*
+!dist/package.json
+
+node_modules/
