@@ -1,6 +1,6 @@
 {
   "name": "npm-pact-binaries",
-  "version": "1.65.0",
+  "version": "1.67.1-beta",
   "description": "",
   "main": "index.js",
   "scripts": {
