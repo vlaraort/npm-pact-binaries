@@ -15,7 +15,7 @@ async function generateDist(lastReleases) {
     }
     const releaseVersion = lastReleases.tag_name.replace('v', '');
     await updateVersion(releaseVersion)
-    console.log("END")
+    console.log("Success building.")
 }
 
 async function getLastReleases() {

@@ -22,12 +22,18 @@ jobs:
       before_deploy:
         - cd dist
       deploy:
-        provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
-        skip_cleanup: true
-      after_deploy:
-        - cd ..
-        - branch_name=`git rev-parse --abbrev-ref HEAD`
-        - git commit -am "[ci-skip] Update version"
-        - git push origin $branch_name
+        - provider: npm
+          email: "$NPM_EMAIL"
+          api_key: "$NPM_TOKEN"
+          skip_cleanup: true
+        - provider: pages
+          skip-cleanup: true
+          target-branch: master # Commit to master instead of gh-pages
+          github-token: $GH_TOKEN
+          keep-history: true # By default, Travis uses push --force and wipes out commit history
+          verbose: true
+      # after_deploy:
+      #   - cd ..
+      #   - branch_name=`git rev-parse --abbrev-ref HEAD`
+      #   - git commit -am "[ci-skip] Update version"
+      #   - git push origin $branch_name
