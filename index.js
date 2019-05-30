@@ -51,7 +51,8 @@ async function run () {
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
-    const releaseVersion = lastReleases.tag_name.replace('v', '');
+    const releaseVersion = lastReleases.tag_name.replace('v', '') + '-' + Math.floor((Math.random() * 10000) + 1);;
+    console.log("RELEASE VERSION", releaseVersion)
     if(content.version !== releaseVersion){
         await generateDist(lastReleases);
     } else {
