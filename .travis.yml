@@ -13,6 +13,7 @@ jobs:
       script: npm run build
     - stage: release
       node_js: 10
+      script: npm run build
       before_deploy:
         - cd dist
       deploy:
