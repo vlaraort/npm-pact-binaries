@@ -10,7 +10,6 @@ const AsyncWriteFile = util.promisify(fs.writeFile);
 async function generateDist(lastReleases) {
     for (let release of lastReleases.assets) {
         const releaseUrl = release.browser_download_url;
-        // console.log(releaseUrl, release.name)
         await downloadRelease(releaseUrl, release.name)
     }
     const releaseVersion = lastReleases.tag_name.replace('v', '');
@@ -40,8 +39,7 @@ async function updateVersion(version) {
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
-    // content.version = version;
-    content.version = '1.67.1-beta'
+    content.version = version;
     await AsyncWriteFile(packagePath, JSON.stringify(content, null, 2));
     console.log("end write")
 }

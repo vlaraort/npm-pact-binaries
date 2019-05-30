@@ -1,14 +1,12 @@
 {
   "name": "npm-pact-binaries",
-  "version": "1.67.1-beta",
-  "description": "",
+  "version": "1.66.0",
+  "description": "Package with the Pact binaries, hosted in NPM",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Víctor Lara <victorlara@outlook.com>",
   "license": "ISC",
-  "dependencies": {
-    "node-fetch": "^2.6.0"
-  }
+  "dependencies": {}
 }

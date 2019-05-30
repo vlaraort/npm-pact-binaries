@@ -23,8 +23,7 @@ async function run() {
     const packagePath = './dist/package.json';
     var file_content = await AsyncReadFile(packagePath);
     var content = JSON.parse(file_content);
-    // const releaseVersion = lastReleases.tag_name.replace('v', '');
-    const releaseVersion = '1.67.1-beta'
+    const releaseVersion = lastReleases.tag_name.replace('v', '');
     if (content.version === releaseVersion) {
         console.log('New binaries not found, skipping publish.');
         process.exit(1);
