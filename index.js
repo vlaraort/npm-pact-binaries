@@ -24,8 +24,6 @@ async function getLastReleases () {
     try {
         const response = await fetch(url + params);
         const json = await response.json();
-        console.log("RELEASES RESPONSE");
-        console.log(json)
         return json;
       } catch (error) {
         console.log("Error fetching releases");
