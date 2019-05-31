@@ -22,4 +22,4 @@ jobs:
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
       after_success:
-      - sh .travis-push.sh
+      - sh scripts/travis-push.sh
