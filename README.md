@@ -23,6 +23,14 @@ npm install -save-dev npm-pact-binaries
 ```
 Now you can install pact-node without access to Github.
 
+## Automated work
+
+This project runs a travis cron daily, in this [url](https://travis-ci.org/vlaraort/npm-pact-binaries/builds).
+
+When a new update is available, the pipeline generates a new version and automagically publish it to the NPM registry.
+
+If it doesn't found a new version, the pipeline fails to avoid the publish script, so don't worry if you see failing jobs :)
+
 ## Thanks!
 
 To all the PACT team, for creating this awesome tool! All credits belong to them.
