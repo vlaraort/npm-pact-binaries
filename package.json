@@ -10,6 +10,7 @@
   "author": "Víctor Lara <victorlara@outlook.com",
   "license": "MIT",
   "dependencies": {
+    "base-64": "^0.1.0",
     "node-fetch": "^2.6.0"
   }
 }
