@@ -18,10 +18,14 @@ async function generateDist(lastReleases) {
 }
 
 async function getLastReleases() {
-    const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest?';
-    const params = new URLSearchParams({ client_id: process.env.GH_CLIENT_ID, client_secret: process.env.GH_CLIENT_SECRET })
+    // const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest?';
+    const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest';
+    // const params = new URLSearchParams({ client_id: process.env.GH_CLIENT_ID, client_secret: process.env.GH_CLIENT_SECRET })
     try {
-        const response = await fetch(url + params);
+        // const response = await fetch(url + params);
+        const response = await fetch(url, {
+            headers: { 'Authorization': 'Basic ' + base64.encode(process.env.GH_CLIENT_ID + ":" + process.env.GH_CLIENT_SECRET) },
+        });
         const json = await response.json();
         return json;
     } catch (error) {
