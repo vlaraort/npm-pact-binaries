@@ -3,9 +3,7 @@ const fs = require('fs')
 const fetch = require("node-fetch");
 const base64 = require('base-64');
 
-const streamPipeline = util.promisify(require('stream').pipeline)
 const AsyncReadFile = util.promisify(fs.readFile);
-const AsyncWriteFile = util.promisify(fs.writeFile);
 
 async function getLastReleases() {
     const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest';
