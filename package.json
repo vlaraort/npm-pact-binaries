@@ -1,6 +1,6 @@
 {
   "name": "npm-pact-binaries",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node Package to generate another package with all the PACT binaries",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "author": "Víctor Lara <victorlara@outlook.com",
   "license": "MIT",
   "dependencies": {
+    "base-64": "^0.1.0",
     "node-fetch": "^2.6.0"
   }
 }

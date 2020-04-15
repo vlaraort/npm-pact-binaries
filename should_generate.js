@@ -1,16 +1,16 @@
 const util = require('util')
 const fs = require('fs')
 const fetch = require("node-fetch");
+const base64 = require('base-64');
 
-const streamPipeline = util.promisify(require('stream').pipeline)
 const AsyncReadFile = util.promisify(fs.readFile);
-const AsyncWriteFile = util.promisify(fs.writeFile);
 
 async function getLastReleases() {
-    const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest?';
-    const params = new URLSearchParams({ client_id: process.env.GH_CLIENT_ID, client_secret: process.env.GH_CLIENT_SECRET })
+    const url = 'https://api.github.com/repos/pact-foundation/pact-ruby-standalone/releases/latest';
     try {
-        const response = await fetch(url + params);
+        const response = await fetch(url, {
+            headers: { 'Authorization': 'Basic ' + base64.encode(process.env.GH_CLIENT_ID + ":" + process.env.GH_CLIENT_SECRET) },
+        });
         const json = await response.json();
         return json;
     } catch (error) {
