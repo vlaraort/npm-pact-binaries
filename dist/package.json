@@ -1,6 +1,6 @@
 {
   "name": "npm-pact-binaries",
-  "version": "1.88.26",
+  "version": "1.88.27",
   "description": "Package with the Pact binaries, hosted in NPM",
   "main": "index.js",
   "scripts": {
